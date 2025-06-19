@@ -32,9 +32,8 @@ func getTestParcel() Parcel {
 func TestAddGetDelete(t *testing.T) {
 	// prepare
 	db, err := sql.Open("sqlite", "tracker.db")
-	if err != nil {
-		require.NoError(t, err)
-	}
+	//Конструкция require.NoError не нуждается в оборачивание IF
+	require.NoError(t, err)
 	defer db.Close()
 	store := NewParcelStore(db)
 	parcel := getTestParcel()
@@ -61,9 +60,7 @@ func TestAddGetDelete(t *testing.T) {
 func TestSetAddress(t *testing.T) {
 	// prepare
 	db, err := sql.Open("sqlite", "tracker.db")
-	if err != nil {
-		require.NoError(t, err)
-	}
+	require.NoError(t, err)
 	defer db.Close()
 	store := NewParcelStore(db)
 	parcel := getTestParcel()
@@ -91,9 +88,7 @@ func TestSetAddress(t *testing.T) {
 func TestSetStatus(t *testing.T) {
 	// prepare
 	db, err := sql.Open("sqlite", "tracker.db")
-	if err != nil {
-		require.NoError(t, err)
-	}
+	require.NoError(t, err)
 	defer db.Close()
 	store := NewParcelStore(db)
 	parcel := getTestParcel()
@@ -121,9 +116,7 @@ func TestSetStatus(t *testing.T) {
 func TestGetByClient(t *testing.T) {
 	// prepare
 	db, err := sql.Open("sqlite", "tracker.db")
-	if err != nil {
-		require.NoError(t, err)
-	}
+	require.NoError(t, err)
 	defer db.Close()
 	store := NewParcelStore(db)
 
